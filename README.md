@@ -1,4 +1,4 @@
-#StudySync
+StudySync
 
 StudySync is a collaborative web platform built to simplify the sharing and organization of academic resources among students. It allows users to upload, access, and download notes, question papers, and presentations across different subjects and semesters.
 
