@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Upload</title>
+    <style>
+        .input-assgn {
+            text-align: center;
+            border: 1px solid black;
+            width: 400px;
+            height: 200px;
+            margin-top: 20px;
+        }
+        select {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Assignments</h1>
+    <div class="input-assgn">
+        <form action="/uploadAssignment" method="post" enctype="multipart/form-data">
+            <select name="subject" required>
+                <option value="CAP">CAP</option>
+                 <option value="DBMS">DBMS</option>
+                 <option value="CN">CN</option>
+                 <option value="OS">OS</option>
+                 <option value="CC">CC</option>
+                 <option value="DEVOPS">DEVOPS</option>
+            </select>
+            <label for="subject">Subject</label>
+            <br><br>
+            <select name="unit" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+            <label for="unit">Unit</label>
+            <br><br>
+            <input type="file" id="fileUpload" name="fileUpload" required>
+            <label for="fileUpload">Select a file to upload</label>
+            <br><br>
+            <input type="submit" value="Upload File">
+        </form>
+    </div>
+</body>
+</html>

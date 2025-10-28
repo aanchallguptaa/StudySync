@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #01130c;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #d1b78a, rgba(70, 120, 90, 0.7));
+            font-family: sans-serif;
+            position: relative;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.106); 
+        }
+
+        .form-container {
+            background-color: #222;
+            height: 550px;
+            width: 550px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .form-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: url(formbg.jpeg) no-repeat;
+            background-size: cover;
+            background-position: left bottom;
+            opacity: 0.8;
+        }
+
+        .signup-container {
+            z-index: 5;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 65%;
+            transition: 0.3s ease;
+        }
+
+        .form-container .form-title {
+            text-align: center;
+            font-size: 50px;
+            font-weight: 600;
+        }
+
+        .form-container .form-holder {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 50px;
+            transition: 0.3s ease;
+        }
+
+        .form-container .form-holder input {
+            border: 0;
+            outline: none;
+            box-shadow: none;
+            display: block;
+            height: 45px;
+            padding: 8px 15px;
+            width: 100%;
+            font-size: 12px;
+        }
+
+        .form-container .form-holder input:last-child {
+            border-bottom: 0;
+        }
+
+        .form-container .form-holder input::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .form-container .submit-btn {
+            background-color: rgb(114, 152, 145);
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            width: 100%;
+            display: block;
+            padding: 15px 45px;
+            margin: 15px auto;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .form-container .submit-btn:hover {
+            background-color: #1d4436;
+        }
+
+        .form-container .signup-container.slide-up {
+            top: 5%;
+            transform: translate(-50%, 0);
+        }
+
+        .form-container .slide-up .form-holder,
+        .form-container .slide-up .submit-btn {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .form-container .slide-up .form-title {
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .form-container .form-title span {
+            color: rgba(0, 0, 0, 0.4);
+            display: none;
+        }
+
+        .form-container .slide-up .form-title span {
+            display: unset;
+            margin-right: 5px;
+        }
+
+        .form-container .signup-container.slide-up .form-title span {
+            color: rgba(26, 23, 23, 0.497);
+        }
+
+        .login-container {
+            background-color: #d5c5aa;
+            z-index: 5;
+            position: absolute;
+            top: 20%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: 0.3s ease;
+        }
+
+        .form-container .login-container.slide-up {
+            top: 90%;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            background-color: #d5c5aa;
+            width: 200%;
+            height: 250px;
+            border-radius: 50%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            top: -20px;
+            z-index: 4;
+            transition: 0.3s ease;
+        }
+
+        .form-container .login-wrapper {
+            z-index: 5;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 65%;
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .form-container .login-container.slide-up .login-wrapper {
+            top: 10%;
+            transform: translate(-50%, 0);
+        }
+
+        .form-container .login-container .form-title {
+            color: #000;
+        }
+
+        .form-container .login-container.slide-up .form-title {
+            margin: 0;
+        }
+
+        .form-container .login-container .form-holder {
+            border: 1px solid #eee;
+        }
+
+        .form-container .login-container .submit-btn {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <!-- Signup -->
+        <div class="signup-container ">
+            <h2 class="form-title" id="signup"><span>or</span>Sign Up</h2>
+            <form action="/signup" method="POST">
+                <div class="form-holder">
+                    <input type="text" class="input" name="username" placeholder="Username" required>
+                    <input type="email" class="input" name="email" placeholder="Email" required>
+                    <input type="password" class="input" name="password" placeholder="Password" required>
+                </div>
+                <button class="submit-btn" type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <!-- Login -->
+        <div class="login-container slide-up">
+            <div class="login-wrapper">
+                <h2 class="form-title" id="login"><span>or</span>Log In</h2>
+                <form action="/login" method="POST">
+                    <div class="form-holder">
+                        <input type="email" class="input" name="email" placeholder="Email" required>
+                        <input type="password" class="input" name="password" placeholder="Password" required>
+                    </div>
+                    <button class="submit-btn" type="submit">Log In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const signupBtn = document.getElementById('signup');
+        const loginBtn = document.getElementById('login');
+
+        const signupContainer = document.querySelector('.signup-container');
+        const loginContainer = document.querySelector('.login-container');
+
+        loginBtn.addEventListener('click', () => {
+            signupContainer.classList.add('slide-up');
+            loginContainer.classList.remove('slide-up');
+        });
+
+        signupBtn.addEventListener('click', () => {
+            loginContainer.classList.add('slide-up');
+            signupContainer.classList.remove('slide-up');
+        });
+    </script>
+
+</body>
+</html>

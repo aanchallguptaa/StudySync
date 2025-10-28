@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papers Upload</title>
+    <style>
+        .input-papers{
+            text-align: center;
+            border: 1px solid black;
+            width: 400px;
+            height: 200px;
+            margin-top: 20px;
+        }
+        select{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Papers</h1>
+    <div class="input-papers">
+    <form action="/uploadQpaper" method="post" enctype="multipart/form-data"> 
+             <select name="subject">
+                 <option value="CAP">CAP</option>
+                 <option value="DBMS">DBMS</option>
+                 <option value="CN">CN</option>
+                 <option value="OS">OS</option>
+                 <option value="CC">CC</option>
+                 <option value="DEVOPS">DEVOPS</option>
+               </select>
+               <label for="subject">Subject</label>
+        <br>
+        <br>
+         <select name="exam_name">
+             <option value="CA1">CA-1</option>
+             <option value="CA2">CA-2</option>
+             <option value="MSE">MSE</option>
+             <option value="ESE">ESE</option>
+             <option value="BACKLOG">Backlog</option>
+         </select>
+         <label for="exam_name">Exam Name</label>
+        <br>
+        <br>
+        <input type="text" name="year">
+        <label for="year">Year</label>
+        <br>
+        <br>
+             <input type="file" id="fileUpload" name="fileUpload">
+             <label for="fileUpload">Select a file to upload</label>
+        <br>
+
+    <div class="upload">
+        <div class="input-field">
+             <input type="submit" class="submit" value="Upload File">
+        </div> 
+     </div>
+        </form>
+    </div>
+</body>
+</html>

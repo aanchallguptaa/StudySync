@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        h2 {
+            font-size: 40px;
+        }
+        #return-btn {
+            font-size: 17px;
+            width: 80px;
+            margin-top: 10px;
+            margin-left: 20px;
+            color: #fff;
+        }
+        #return-btn:hover {
+            background: #90b8a2d8;
+            color: black;
+        }
+        body {
+            background-color: #90b8a2d8;
+        }
+        .card {
+            background-color: #90b8a2d8;
+        }
+        a.btn.btn-primary, a.btn.btn-danger, button.btn.btn-primary {
+            background-color: #114232;
+            border-color: #114232;
+            transition: .4s;
+        }
+        a.btn.btn-primary:hover, a.btn.btn-danger:hover, button.btn.btn-primary:hover {
+            background: #90b8a2d8;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-mid-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h2>Assignments</h2>
+                        </div>
+                        <div class="col-md-7">
+                            <form id="filterForm">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <select name="subject" required class="form-select">
+                                            <option value="">Select Subject</option>
+                                            <option value="CAP">CAP</option>
+                                            <option value="DBMS">DBMS</option>
+                                            <option value="CN">CN</option>
+                                            <option value="OS">OS</option>
+                                            <option value="CC">CC</option>
+                                            <option value="DEVOPS">DEVOPS</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select name="unit" required class="form-select">
+                                            <option value="">Select Unit</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button type="submit" class="btn btn-primary">Filter</button>
+                                        <button type="button" id="resetBtn" class="btn btn-danger">Reset</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>File Name</th>
+                                <th>Subject</th>
+                                <th>Unit</th>
+                                <th>Download</th>
+                            </tr>
+                        </thead>
+                        <tbody id="assignmentsTable">
+                            <!-- Assignments will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="return-btn" href="login.html" class="btn btn-danger">Return</a>
+
+    <script>
+        function loadAssignments(subject = '', unit = '') {
+            fetch(`/api/assignments?subject=${subject}&unit=${unit}`)
+                .then(response => response.json())
+                .then(assignments => {
+                    const tableBody = document.getElementById('assignmentsTable');
+                    tableBody.innerHTML = '';
+                    if (assignments.length > 0) {
+                        assignments.forEach(assignment => {
+                            const row = `
+                                <tr>
+                                    <td>${assignment.file}</td>
+                                    <td>${assignment.subject}</td>
+                                    <td>${assignment.unit}</td>
+                                    <td><a href="/downloadAssignment/${assignment.file}" class="btn btn-primary" download>Download</a></td>
+                                </tr>
+                            `;
+                            tableBody.innerHTML += row;
+                        });
+                    } else {
+                        tableBody.innerHTML = '<tr><td colspan="4">No Records Found.</td></tr>';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        document.getElementById('filterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const subject = this.subject.value;
+            const unit = this.unit.value;
+            loadAssignments(subject, unit);
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            document.getElementById('filterForm').reset();
+            loadAssignments();
+        });
+
+        // Load assignments on page load
+        loadAssignments();
+    </script>
+</body>
+</html>

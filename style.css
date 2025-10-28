@@ -1,0 +1,233 @@
+.navbar{
+    background-color: #5c5c5f92;
+    height: 100px;
+    margin: 20px;
+    border-radius: 16px;
+    padding: 0.5rem;
+}
+.navbar-brand{
+    font-size: 60px;
+    font-weight: 500;
+    color: black;
+}
+.login-button{
+    background-color: black;
+    color: #5c5c5ffc;
+    font-size: 20px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+.login-button:hover{
+    background-color: #666777;
+    color: black;
+}
+.nav-link{
+    color: black;
+    font-weight: 500;
+    font-size: 30px;
+    position: relative;
+}
+.nav-link::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: black;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+}
+.nav-link:hover::before{
+    width: 100%;
+    visibility: visible;
+}
+.hero-section{
+    background: url(bg_image.jpeg) no-repeat center;
+    background-size: cover;
+    width: 100%;
+}
+.hero-section::before{
+    background-color: rgba(44, 40, 40, 0.6);
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.hero-section .container{
+    height: 100vh;
+    z-index: 1;
+    position: relative;
+}
+.hero-section h1{
+    color: #ffffffda;
+    font-size: 5rem;
+}
+.hero-section h3{
+    color: #ffffffda;
+    font-size: 3rem;
+}
+.dropdown-menu {
+    background-color: #ffffff71;
+}
+
+
+
+
+
+
+
+/* Upload Form CSS */
+/* POPPINS FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+.wrapper{
+    background: #90b8a2d8;
+    padding: 20px 20px 20px 20px;
+}
+.main{
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.row{
+    width: 1000px;
+    height: 650px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
+}
+.side-image{
+    background-image: url("uploadform.jpeg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 10px 0 0 10px;
+}
+.right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.input-box{
+    width: 300px;
+    box-sizing: border-box;
+} 
+.input-box header{
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 45px;
+    color: #263c2d;
+}
+.input-field{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0 10px 0 10px;
+}
+.input{
+    height: 30px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    outline: none;
+    margin-bottom: 20px;
+    color: #40414a;
+}
+.input-box .input-field label{
+    position: absolute;
+    top: -22px;
+    left: 10px;
+    pointer-events: none;
+    transition: .5s;
+} 
+#email{
+    top: -22px;
+} 
+.input-field input:focus ~ label
+   {
+    top: -10px;
+    font-size: 13px;
+}
+.input-field .input:focus, .input-field .input:valid{
+    border-bottom: 1px solid #90b8a2d8;
+ }
+.submit{
+    border: none;
+    outline: none;
+    height: 45px;
+    background: #ececec;
+    border-radius: 5px;
+    transition: .4s;
+}
+.submit:hover{
+    background: #90b8a2d8;
+    color: #fff;
+ }
+
+ /* Existing styles... */
+
+/* Account page styles */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.signup-container, .login-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 0 1rem;
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.form-holder {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-btn {
+    background-color: #5c5c5f;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #4a4a4c;
+}
+

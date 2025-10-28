@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Upload</title>
+    <style>
+        .input-notes{
+            text-align: center;
+            border: 1px solid black;
+            width: 400px;
+            height: 200px;
+            margin-top: 20px;
+        }
+        select{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Notes</h1>
+    <div class="input-notes">
+    <form action="/uploadNotes" method="post" enctype="multipart/form-data"> 
+             <select name="subject">
+                <option value="CAP">CAP</option>
+                <option value="DBMS">DBMS</option>
+                <option value="CN">CN</option>
+                <option value="OS">OS</option>
+                <option value="CC">CC</option>
+                <option value="DEVOPS">DEVOPS</option>
+               </select>
+               <label for="subject">Subject</label>
+        <br>
+        <br>
+         <select name="unit">
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4">4</option>
+             <option value="5">5</option>
+             <option value="6">6</option>
+         </select>
+         <label for="unit">Unit</label>
+        <br>
+        <br>
+             <input type="file" id="fileUpload" name="fileUpload">
+             <label for="fileUpload">Select a file to upload</label>
+        <br>
+
+    <div class="upload">
+        <div class="input-field">
+             <input type="submit" class="submit" value="Upload File">
+        </div> 
+     </div>
+        </form>
+    </div>
+</body>
+</html>
